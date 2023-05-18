@@ -1,0 +1,28 @@
+# To get started type 'test-' and select the template you want to use.
+# YAML uses backslash as its escape character and eats the first layer of quote marks.
+# Use Double Quotes around values containing '$' or '{'.
+
+# To reference a property, use this syntax: 
+# without groovy - value: "${PROPERTY_CODE}"
+#    with groovy - value: "PROPERTY_CODE" 
+
+# To reference a secure property on the deploy target group and hide the value from the UI, use this syntax: 
+# without groovy - value: "\\$${FD_INSTANCE_CODE}_PROPERTY_CODE"
+---
+testName: Postman Test
+description: Generated Postman Test
+# Optionally apply filters to control when this test executes
+# The filter below would only execute this test if the deploy target environment code is DEV 
+# filters: 
+#  - type: env
+#    value: DEV
+workflow:
+  name: Postman-runCollection
+  inputs:
+    # This example is a regex expression to match all collection.json files in fdtests folder of the artifacts folder.
+    - code: FDPMN_COLLECTION_FILE
+      value: .*[\\/\\\\]fdtests[\\/\\\\].*\\.postman_collection.json
+    # Optional Test Instance to execute the test(s) on. If not specified, execution will occur on the deploy/target instance.
+    - code: TEST_INSTANCE   
+      value: GBPOSATMAANAAAA
+      
